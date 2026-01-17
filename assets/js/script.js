@@ -13,4 +13,23 @@ for(let i=0; i<dropList.length; i++){
         let option = `<option value="${country}" ${selected}>${country}</option>`;
         dropList[i].insertAdjacentHTML("beforeend", option); // inserts options tag inside select tag
     }
+
+    dropList[i].addEventListener("change", e => {
+        loadFlag(e.target);   //loading the flag for the selected element
+    });
+}
+
+
+function loadFlag(countryCode){
+    let flagCode;
+    for(code in country_code){
+        if(code == countryCode.value){
+
+            flagCode = country_code[code];
+
+            let imgElement = countryCode.parentElement.querySelector("img"); // selecting img tag of particular drop list
+            imgElement.src = `https://www.flagcdn.com/48x36/${flagCode.toLowerCase()}.png`;
+            break;
+        }
+    }
 }
