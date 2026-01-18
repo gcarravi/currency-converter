@@ -1,11 +1,32 @@
-/* Import Google Font - Poppins */
+/* Google fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+/* CSS variables */
+:root {
+  --font: 'Poppins', sans-serif;
+
+  /* Light Theme */
+  --day-bg: #fff;
+  --day-blue: #0e3dbe;
+  --day-text: #35505f;
+
+  /* Dark Theme */
+  --night-bg: #1e1e1e;
+  --night-text: #d9c3b0;
+  --night-card-bg: #35505f;
+
+  /* Accent Colors */
+  --accent: #c73232; 
+
+}
+
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font);
 }
 
 body{
@@ -19,21 +40,78 @@ body{
   /* background: #675AFE; */
 }
 
-::selection{
+
+/* body.day {
+  background-color: var(--day-bg);
+  color: var(--day-text);
+} */
+
+
+/* ::selection{
   color: #fff;
   background: #675AFE;
-}
+} */
 
 
 .container{
   width: 370px;
   padding: 30px;
   border-radius: 7px;
-  background: #fff;
+
+  /* background: var(--day-bg); */
+
+  /* color: #0e3dbe; */
   /* background-color: transparent;    */
   /* background: rgba(43, 50, 94, 0.051); */
   box-shadow: 7px 7px 20px #323a6b0d;
 }
+
+
+.container.day {
+  background: var(--day-bg);
+}
+
+.container.day header {
+  color: var(--day-blue);
+}
+
+.container.day form button {
+  color: var(--day-bg);
+  background: var(--day-blue);
+}
+
+.container.night {
+  background: var(--night-bg);
+  color: var(--night-text);
+}
+
+.container.night header {
+  color: var(--night-text);
+}
+
+.container.night form button {
+  color: var(--night-text);
+  background: var(--night-card-bg);
+}
+
+.container.night .select-box {
+  border-color: var(--night-text);
+}
+
+.container.night select {
+  color: var(--night-text);
+}
+
+.container.night select option {
+  background: var(--night-bg);
+  color: var(--night-text);
+}
+
+.container.night form input {
+  background: var(--night-bg);
+  color: var(--night-text);
+}
+
 
 .container header{
   font-size: 28px;
@@ -43,6 +121,19 @@ body{
 
 .container form{
   margin: 40px 0 20px 0;
+}
+
+#themeToggle {
+  width: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--day-blue);
+}
+
+.container.night #themeToggle {
+  color: var(--night-text);
 }
 
 form :where(input, select, button){
@@ -124,13 +215,16 @@ form .exchange-rate{
 
 form button{
   height: 52px;
-  color: #fff;
+  /* color: var(--day-bg); */
   font-size: 17px;
   cursor: pointer;
-  background: #675AFE;
+  /* background: var(--day-blue); */
   transition: 0.3s ease;
 }
 
-form button:hover{
+/* form button:hover{
   background: #4534fe;
-}
+} */
+
+
+/* // background: #675AFE; */
