@@ -8,7 +8,7 @@ Exchange Converter is a sleek and responsive web application that lets users con
 
 ## Live Demo
 
-> 🔗 *(Add your live demo link here — e.g., GitHub Pages or hosted URL)*
+> 🔗 [Try Exchange Converter Here](https://gcarravi.github.io/currency-converter/)
 
 ---
 

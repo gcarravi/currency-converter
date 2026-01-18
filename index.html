@@ -15,7 +15,7 @@
     <div class="container day">
         <div>
             <div>
-                <button id="themeToggle"><i class="fa-solid fa-sun"></i></button>
+                <button id="themeToggle" aria-label="Day/Night toggle"><i class="fa-solid fa-sun"></i></button>
             </div>
             <br>
             <header>Currency Conveter</header>
@@ -27,26 +27,28 @@
          </header> -->
             <form action="#">
                 <div class="amount">
-                    <p>Enter Amount</p>
-                    <input type="text" value="1">
+                    <!-- <p>Enter Amount</p> -->
+                    <label for="amount">Enter Amount</label>
+                    <input type="text" id="amount" value="1">
                 </div>
                 <div class="drop-list">
                     <div class="from">
-                        <p>From</p>
+                        <!-- <p>From</p> -->
+                        <label for="from">From</label>
                         <div class="select-box">
                             <img src="https://flagcdn.com/48x36/us.png" alt="flag">
-                            <select><!--options tag are inserted from JS--></select>
+                            <select id="from"><!--options tag are inserted from JS--></select>
                         </div>
                     </div>
                     <div class="icon">
-                        <!-- <i class="fas fa-exchange-alt"></i> -->
                         <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     </div>
                     <div class="to">
-                        <p>To</p>
+                        <!-- <p>To</p> -->
+                        <label for="to">To</label>
                         <div class="select-box">
                             <img src="https://flagcdn.com/48x36/fr.png" alt="flag">
-                            <select><!--options tag are inserted from JS--></select>
+                            <select id="to"><!--options tag are inserted from JS--></select>
                         </div>
                     </div>
                 </div>
