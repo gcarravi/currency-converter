@@ -85,12 +85,33 @@ As a user, I want to:
 
 ---
 
-## Testing
+## Testing And Validation
+
+### Manual Testing
 
 - 🧪 Tested in latest versions of Chrome, Firefox, and Edge  
 - 📱 Checked across various screen sizes for responsiveness  
 - 🛠️ Manual testing for user input validation and edge cases  
 - 🧾 API error handling verified for offline/unreachable API scenarios
+
+#### Automated Testing
+
+- Lighthouse (Performance, Accesibility and Best Pratices)
+
+Initial report showed low performance ratings  as shown below:
+
+![Lighthouse initial report](assets/images/lighthouse-report1.webp)
+
+Solution: add labels to all selects and input elements.
+
+![Lighthouse initial report](assets/images/lighthouse-report2.webp)
+
+These scores reflect a well-optimized and accessible site. Performance may vary slightly across networks or browsers.
+
+
+#### W3C HTML validator
+
+#### W3C CSS Validator
 
 ---
 
