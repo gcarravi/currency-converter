@@ -8,6 +8,8 @@ const dropList = document.querySelectorAll(".drop-list select");
 const convertButton = document.querySelector("form button");
 const body = document.body;
 const container = document.querySelector('.container');
+const themeToggle = document.querySelector('#themeToggle');
+const swapIcon = document.querySelector('.icon');
 
 // Populates the From and To drop downs
 for(let i=0; i<dropList.length; i++){
@@ -25,6 +27,11 @@ for(let i=0; i<dropList.length; i++){
 
     dropList[i].addEventListener("change", e => {
         loadFlag(e.target);   //loading the flag for the selected element
+        // persist currency selections
+        const fromSelect = document.querySelector('.from select');
+        const toSelect = document.querySelector('.to select');
+        localStorage.setItem('fromCurrency', fromSelect.value);
+        localStorage.setItem('toCurrency', toSelect.value);
     });
 }
 
@@ -39,57 +46,112 @@ function loadFlag(countryCode){
     }
 }
 
-window.addEventListener("load", e => {
-    e.preventDefault();
+window.addEventListener("load", () => {
+    // restore theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'night') {
+        container.classList.add('night');
+        container.classList.remove('day');
+    } else {
+        container.classList.add('day');
+        container.classList.remove('night');
+    }
+    // set icon based on theme
+    const icon = themeToggle.querySelector('i');
+    if (container.classList.contains('night')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+
+    // restore currency selections
+    const savedFrom = localStorage.getItem('fromCurrency');
+    const savedTo = localStorage.getItem('toCurrency');
+    const fromSelect = document.querySelector('.from select');
+    const toSelect = document.querySelector('.to select');
+    if (savedFrom) {
+        fromSelect.value = savedFrom;
+        loadFlag(fromSelect);
+    }
+    if (savedTo) {
+        toSelect.value = savedTo;
+        loadFlag(toSelect);
+    }
+
     getExchangeRate();
-})
+});
 
 
 convertButton.addEventListener("click", () => {
     getExchangeRate();
-})
+});
 
+// swap currencies when clicking the arrows
+if (swapIcon) {
+    swapIcon.addEventListener('click', () => {
+        const fromSelect = document.querySelector('.from select');
+        const toSelect = document.querySelector('.to select');
+        const tmp = fromSelect.value;
+        fromSelect.value = toSelect.value;
+        toSelect.value = tmp;
 
-function getExchangeRate() {
-    const amount = document.querySelector(".amount input");
-    const fromCurrency = document.querySelector(".from select");
-    const toCurrency = document.querySelector(".to select");
-    const conversionMessage = document.querySelector(".exchange-rate");
+        // update flags and persist
+        loadFlag(fromSelect);
+        loadFlag(toSelect);
+        localStorage.setItem('fromCurrency', fromSelect.value);
+        localStorage.setItem('toCurrency', toSelect.value);
 
-    let amountValue = amount.value;
-    if(amountValue == "" || amountValue=="0"){
-        amount.value = "1";
-        amountValue = 1;
-    }
-
-    conversionMessage.innerText = "Getting exchange rate...";
-
-    let url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency.value}`;
-    
-    fetch(url)
-    .then(response  => response.json())
-    .then(result => {
-        let exchangeRate = result.conversion_rates[toCurrency.value];
-        let convertion = (amountValue * exchangeRate).toFixed(2);
-        let finalConvertion = convertion == "0.00" ? amountValue * exchangeRate : convertion;
-        conversionMessage.innerText = `${amountValue} ${fromCurrency.value} = ${finalConvertion} ${toCurrency.value}`;
-    }).catch(() => {
-        conversionMessage.innerText = "Something went wrong";  // catches any errors that may occur at the time of the fetching
+        getExchangeRate();
     });
 }
 
 
-//THEME TOGGLE
-themeToggle.addEventListener('click', () => {
-  container.classList.toggle('night');
-  container.classList.toggle('day');
+async function getExchangeRate() {
+    const amountEl = document.querySelector('.amount input');
+    const fromCurrency = document.querySelector('.from select');
+    const toCurrency = document.querySelector('.to select');
+    const conversionMessage = document.querySelector('.exchange-rate');
 
-  const icon = themeToggle.querySelector('i');
-  if (container.classList.contains('night')) {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  } else {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  }
+    let amountValue = parseFloat(amountEl.value);
+    if (isNaN(amountValue) || amountValue <= 0) {
+        amountEl.value = '1';
+        amountValue = 1;
+    }
+
+    convertButton.disabled = true;
+    conversionMessage.innerText = 'Getting exchange rate...';
+
+    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency.value}`;
+    try {
+        const response = await fetch(url);
+        const result = await response.json();
+        const exchangeRate = result.conversion_rates[toCurrency.value];
+        const conversion = (amountValue * exchangeRate).toFixed(2);
+        const finalConversion = conversion === '0.00' ? amountValue * exchangeRate : conversion;
+        conversionMessage.innerText = `${amountValue} ${fromCurrency.value} = ${finalConversion} ${toCurrency.value}`;
+    } catch (err) {
+        conversionMessage.innerText = 'Something went wrong';
+    } finally {
+        convertButton.disabled = false;
+    }
+}
+
+
+// THEME TOGGLE
+themeToggle.addEventListener('click', () => {
+    container.classList.toggle('night');
+    container.classList.toggle('day');
+
+    const icon = themeToggle.querySelector('i');
+    if (container.classList.contains('night')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'night');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'day');
+    }
 });

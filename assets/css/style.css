@@ -193,3 +193,9 @@ form button{
   cursor: pointer;
   transition: 0.3s ease;
 }
+
+/* Disabled/loading state for fetch */
+form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
