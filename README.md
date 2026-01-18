@@ -111,14 +111,45 @@ These scores reflect a well-optimized and accessible site. Performance may vary 
 
 #### W3C HTML validator
 
+used [W3C Nu HTML Checker](https://validator.w3.org/)
+
+-> [index.html]: Passed all tests
+
+![HTML validation index.html page](assets/images/index-final-check.webp)
+
 #### W3C CSS Validator
+
+Used [W3C Schools CSS validator](https://jigsaw.w3.org/css-validator/)
+
+Stylesheets passed validation including use of valid CSS custom properties.
+
+![CSS validation test](assets/images/css-validation.webp)
 
 ---
 
 ## Deployment
 
-You can deploy the app by:
+Site deployed using [GitHub Pages](https://pages.github.com/) at [Currency Converter](https://gcarravi.github.io/currency-converter/)
 
-1. Cloning the repository  
-   ```bash
-   git clone https://github.com/<your-username>/exchange-converter-app.git
+
+-> **Steps to deploy a website using GitHub Pages**
+
+1. Open your github repository
+2. Open the settings
+3. Select 'Pages' from the side menu
+4. Select the branch you want to deploy from the dropdown menu
+
+
+
+## Getting Started
+
+1. Open the folder where you would like to clone the project
+2. Open a terminal window
+3. Enter the following command: <code>git clone https://github.com/gcarravi/currency-converter.git</code>
+4. On the terminal start the service locally by executing the following command: <code>python -m http.server --bind 127.0.0.1</code>
+5. the command above will give you the following: <code>Serving HTTP on 127.0.0.1 port 8000 (http://127.0.0.1:8000/)</code>. Click on it to see the application running in your local environment.
+
+
+## License
+
+This project is intended for educational and personal portfolio use only. Not licensed for commercial redistribution.
