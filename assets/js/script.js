@@ -11,7 +11,6 @@ const container = document.querySelector('.container');
 const themeToggle = document.querySelector('#themeToggle');
 const swapIcon = document.querySelector('.icon');
 
-
 // Populates the From and To drop downs
 for(let i=0; i<dropList.length; i++){
     for(country in country_code){
