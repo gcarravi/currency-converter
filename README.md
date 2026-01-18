@@ -1,5 +1,7 @@
 # Exchange Converter
 
+![screenshot of homepage and CTA button](assets/images/home.webp)
+
 Exchange Converter is a sleek and responsive web application that lets users convert currencies quickly and easily using real-time exchange rates. Built with HTML, CSS, and JavaScript, it demonstrates interactive UI design, API integration, and dynamic DOM manipulation.
 
 ---
