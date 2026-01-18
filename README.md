@@ -21,8 +21,6 @@ Exchange Converter is a sleek and responsive web application that lets users con
 - [Built With](#built-with)  
 - [Testing](#testing)  
 - [Deployment](#deployment)  
-- [Future Features](#future-features)  
-- [Known Bugs](#known-bugs)  
 - [Credits](#credits)  
 
 ---
@@ -149,7 +147,17 @@ Site deployed using [GitHub Pages](https://pages.github.com/) at [Currency Conve
 4. On the terminal start the service locally by executing the following command: <code>python -m http.server --bind 127.0.0.1</code>
 5. the command above will give you the following: <code>Serving HTTP on 127.0.0.1 port 8000 (http://127.0.0.1:8000/)</code>. Click on it to see the application running in your local environment.
 
+## Credits
+
+- [exchangerate-api.com](https://app.exchangerate-api.com/)
+- [Flagpedia - Flags of the world](https://flagcdn.com)
+- [Poppins Font - Google Fonts](https://fonts.google.com/specimen/Poppins)
+- [Fontawesome](https://kit.fontawesome.com/)
+
 
 ## License
 
 This project is intended for educational and personal portfolio use only. Not licensed for commercial redistribution.
+
+
+
