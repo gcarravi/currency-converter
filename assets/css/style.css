@@ -9,16 +9,11 @@
   /* Light Theme */
   --day-bg: #fff;
   --day-blue: #0e3dbe;
-  --day-text: #35505f;
 
   /* Dark Theme */
   --night-bg: #1e1e1e;
   --night-text: #d9c3b0;
   --night-card-bg: #35505f;
-
-  /* Accent Colors */
-  --accent: #c73232; 
-
 }
 
 
@@ -35,34 +30,14 @@ body{
   justify-content: center;
   min-height: 100vh;
   padding: 0 10px;
-  background: url('../images/bitcoin.jpg') no-repeat center center;
+  background: url('../images/bitcoin.webp') no-repeat center center;
   background-size: cover;
-  /* background: #675AFE; */
 }
-
-
-/* body.day {
-  background-color: var(--day-bg);
-  color: var(--day-text);
-} */
-
-
-/* ::selection{
-  color: #fff;
-  background: #675AFE;
-} */
-
 
 .container{
   width: 370px;
   padding: 30px;
   border-radius: 7px;
-
-  /* background: var(--day-bg); */
-
-  /* color: #0e3dbe; */
-  /* background-color: transparent;    */
-  /* background: rgba(43, 50, 94, 0.051); */
   box-shadow: 7px 7px 20px #323a6b0d;
 }
 
@@ -215,16 +190,7 @@ form .exchange-rate{
 
 form button{
   height: 52px;
-  /* color: var(--day-bg); */
   font-size: 17px;
   cursor: pointer;
-  /* background: var(--day-blue); */
   transition: 0.3s ease;
 }
-
-/* form button:hover{
-  background: #4534fe;
-} */
-
-
-/* // background: #675AFE; */
