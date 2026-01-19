@@ -129,7 +129,6 @@ let country_code = {
     "SDG" : "SD",
     "SEK" : "SE",
     "SGD" : "SG",
-    "SKK" : "SK",
     "SLL" : "SL",
     "SOS" : "SO",
     "SRD" : "SR",
