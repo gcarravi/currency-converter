@@ -6,7 +6,6 @@ const apiKey = '5b6ec250805f815e06225ed0';
 //DOM ELEMENTS
 const dropList = document.querySelectorAll(".drop-list select");
 const convertButton = document.querySelector("form button");
-const body = document.body;
 const container = document.querySelector('.container');
 const themeToggle = document.querySelector('#themeToggle');
 const swapIcon = document.querySelector('.icon');
